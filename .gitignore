@@ -1,0 +1,94 @@
+# 데이터 파일들 (용량이 크고 민감할 수 있음)
+*.csv
+*.xlsx
+*.xls
+*.json
+*.parquet
+
+# Python 관련
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 가상환경
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# 환경 설정
+.env
+.venv
+
+# IDE 설정
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 운영체제 파일
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 로그 파일
+*.log
+
+# 임시 파일
+*.tmp
+*.temp
+*.bak
+
+# 모델 파일 (용량이 클 수 있음)
+*.pkl
+*.joblib
+*.h5
+*.model
+
+# 이미지 파일 (차트 등은 포함하되 대용량은 제외)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+
+# 출력 디렉토리
+outputs/
+results/
+logs/
+
+# 특정 임시 파일들
+performance_evolution.png
+*.pyc 
