@@ -1,21 +1,45 @@
-"""Model training and evaluation module."""
+"""
+모델 훈련 및 평가 모듈
+
+개발 과정:
+- 처음에는 단일 모델(RandomForest)로 시작
+- 성능 향상을 위해 LightGBM, XGBoost, CatBoost 추가
+- 각 모델별 최적 하이퍼파라미터 튜닝 진행
+
+요청사항:
+- 각 모델별 feature importance 저장 (분석용)
+- 훈련 시간도 기록해달라 (효율성 비교용)
+- 모든 모델 동시 실행해서 비교 가능하도록
+"""
 
 import pandas as pd
 import numpy as np
 from typing import Dict, Any, List, Tuple, Optional
 import time
 
-from sklearn.ensemble import RandomForestRegressor
+# 머신러닝 라이브러리들
+from sklearn.ensemble import RandomForestRegressor  # 기본 baseline
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
-from lightgbm import LGBMRegressor
-from xgboost import XGBRegressor
-from catboost import CatBoostRegressor
+from lightgbm import LGBMRegressor      # 빠르고 정확한 그래디언트 부스팅
+from xgboost import XGBRegressor        # 성능 좋은 그래디언트 부스팅
+from catboost import CatBoostRegressor  # 범주형 변수 처리 우수
 
 
 class ModelTrainer:
     """
-    Model trainer for 119 call prediction.
-    Supports RandomForest, LightGBM, XGBoost, and CatBoost.
+    119 응급신고 예측용 모델 훈련기
+    
+    지원 모델:
+    - RandomForest: 해석하기 쉽고 안정적 (baseline)
+    - LightGBM: 빠르고 메모리 효율적
+    - XGBoost: 대회에서 입증된 성능
+    - CatBoost: 범주형 변수 자동 처리 우수
+    
+    개발 철학:
+    - 모든 모델 동일한 조건에서 훈련 및 평가
+    - 하이퍼파라미터는 설정 파일에서 관리
+    - 재현 가능성을 위해 random_state 고정
+    - 투명성을 위해 feature importance 저장
     """
     
     def __init__(self):
@@ -330,10 +354,18 @@ class ModelTrainer:
         Args:
             model_name: Name of the model
             feature_names: List of feature names
-            filename: Output filename
+            filename: Output filename (will be saved in outputs/ folder)
             top_n: Number of top features to save
         """
         try:
+            # outputs 폴더 생성
+            import os
+            os.makedirs('outputs', exist_ok=True)
+            
+            # filename이 이미 outputs/로 시작하지 않으면 추가
+            if not filename.startswith('outputs/'):
+                filename = f'outputs/{filename}'
+            
             importance = self.get_feature_importance(model_name, feature_names)
             importance.head(top_n).to_csv(filename, encoding='utf-8')
             print(f"{model_name} 피처 중요도 Top {top_n}을 {filename}에 저장했습니다.")

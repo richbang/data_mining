@@ -1,4 +1,6 @@
-"""Data loading and preprocessing module."""
+"""
+데이터 로딩 및 전처리 모듈
+"""
 
 import pandas as pd
 import numpy as np
@@ -8,21 +10,21 @@ import time
 
 class DataLoader:
     """
-    Data loader for 119 call prediction project.
-    Handles data loading, train/test splitting, and basic preprocessing.
+    119 응급신고 예측 프로젝트용 데이터 로더
+    
     """
     
     def __init__(self, data_file: str, encoding: str = 'utf-8'):
         """
-        Initialize DataLoader.
+        데이터로더 초기화
         
         Args:
-            data_file: Path to the data file
-            encoding: File encoding
+            data_file: 데이터 파일 경로
+            encoding: 파일 인코딩 (기본값: utf-8)
         """
         self.data_file = data_file
         self.encoding = encoding
-        self.data: pd.DataFrame = None
+        self.data: pd.DataFrame = None  # 로딩된 데이터 저장용
 
     def load_data(self, verbose: bool = True) -> pd.DataFrame:
         """

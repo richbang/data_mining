@@ -16,11 +16,7 @@ from src.features.pca_holder import PCAHolder
 class PCAExperiment:
     """
     PCA 사용/미사용 효과를 비교하는 실험 클래스.
-    
-    **팀원 논의 사항 검증:**
-    - 양다현: "변수가 많으니 PCA 변수까지 추가 안 해도 괜찮다"
-    - 박승정: "차원 축소가 목적인데 변수를 늘리는 것이 맞는가?"
-    
+
     **실험 내용:**
     - PCA 미사용 vs 사용 성능 비교
     - 변수 개수 변화 분석
@@ -229,7 +225,6 @@ class PCAExperiment:
         print(f"\n📊 **변수 개수 분석**")
         print(f"   • PCA 미사용: {comp_df.loc[0, 'Variables_without_PCA']}개 변수")
         print(f"   • PCA 사용: {comp_df.loc[0, 'Variables_with_PCA']}개 변수 (+{var_increase}개)")
-        print(f"   • 박승정 의견: '차원 축소가 목적인데 변수를 늘리는 것이 맞는가?'")
         
         self.recommendation = recommendation
         
@@ -255,7 +250,6 @@ class PCAExperiment:
         summary = {
             'Recommendation': self.recommendation,
             'Analysis_Date': pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S'),
-            'Team_Discussion': '양다현: PCA 변수 추가 의문, 박승정: PCA 효과 확신 부족'
         }
         
         pd.DataFrame([summary]).to_csv('pca_analysis_summary.csv', index=False, encoding='utf-8')

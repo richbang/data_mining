@@ -1,4 +1,10 @@
-"""Configuration settings for 119 Call Prediction project."""
+"""
+119 응급신고 예측 프로젝트 설정 파일
+
+핵심 설정값들:
+- CORRELATION_THRESHOLD: 0.85 → 0.90 → 0.95로 실험 후 결정
+- USE_PCA: True → False로 변경
+"""
 
 import os
 from dataclasses import dataclass
@@ -7,36 +13,46 @@ from typing import List, Dict, Any
 
 @dataclass
 class Config:
-    """Configuration class for the 119 call prediction project."""
+    """
+    119 응급신고 예측 프로젝트 통합 설정 클래스
     
-    # Data settings
-    DATA_FILE: str = 'human_combined_full_data_utf8.csv'
-    ENCODING: str = 'utf-8'
+    이 파일 하나로 모든 실험 설정 관리:
+    - 데이터 파일 경로 및 인코딩
+    - 피처 엔지니어링 파라미터
+    - 모델 하이퍼파라미터
+    - 평가 및 출력 설정
     
-    # Train/Test split
-    TRAIN_YEARS: List[int] = None
-    TEST_YEARS: List[int] = None
+    수정하고 싶은 설정이 있으면 여기서만 바꾸면 됨!
+    """
     
-    # City coordinates (Busan)
-    CITY_COORDINATES: tuple = (35.1795543, 129.0756416)
+    # 📁 데이터 관련 설정
+    DATA_FILE: str = 'human_combined_full_data_utf8.csv'  # UTF-8로 변환된 데이터 파일
+    ENCODING: str = 'utf-8'  # UTF-8로 변환해서 사용
+    
+    # 📅 Train/Test 분할 (시계열 특성 고려)
+    TRAIN_YEARS: List[int] = None  # [2020, 2021, 2022] - 3년간 훈련
+    TEST_YEARS: List[int] = None   # [2023]
+    
+    # 🗺️ 부산시 지리 정보 (거리 계산용)
+    CITY_COORDINATES: tuple = (35.1795543, 129.0756416)  # 부산 중심 좌표
     COAST_LAT: float = 34.8902691
     
-    # Feature engineering settings
-    LAG_DAYS: List[int] = None
-    ROLLING_WINDOWS: List[int] = None
-    WEATHER_FEATURES: List[str] = None
+    # 🔧 피처 엔지니어링 설정
+    LAG_DAYS: List[int] = None        # [1, 3, 7] - 지연 피처 생성 일수
+    ROLLING_WINDOWS: List[int] = None # [3, 7, 14] - 롤링 윈도우 크기들
+    WEATHER_FEATURES: List[str] = None # 상호작용 피처 생성용 기상 변수들
     
-    # Model settings
-    RANDOM_STATE: int = 42
-    N_JOBS: int = -1
+    # ⚙️ 모델 공통 설정
+    RANDOM_STATE: int = 42  # 재현성을 위한 고정 시드
+    N_JOBS: int = -1        # 모든 CPU 코어 사용
     
-    # PCA settings (팀원 논의 결과: PCA 사용 여부 선택 가능)
-    USE_PCA: bool = False # True가 성능이 더 낮음
-    PCA_COMPONENTS: int = 3
+    # 🎯 PCA 설정
+    USE_PCA: bool = True #False   # PCA 사용 여부
+    PCA_COMPONENTS: int = 3 # PCA 사용 시 주성분 개수
     
-    # Feature selection settings
-    CORRELATION_THRESHOLD: float = 0.95  # 스레쉬홀드 선택
-    USE_FEATURE_IMPORTANCE_FILTERING: bool = False  # 팀원 우려에 따라 기본값 False
+    # 🔍 피처 선택 설정 (핵심!)
+    CORRELATION_THRESHOLD: float = 0.95  # 실험 후 결정
+    USE_FEATURE_IMPORTANCE_FILTERING: bool = False  # 자동 필터링 비활성화
     
     # Model parameters
     RF_PARAMS: Dict[str, Any] = None

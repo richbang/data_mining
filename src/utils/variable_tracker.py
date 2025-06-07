@@ -1,4 +1,15 @@
-"""Variable selection tracking module for transparent feature selection process."""
+"""
+변수 선택 추적 모듈 - 투명한 피처 선택 과정 기록
+
+개발 배경:
+- 승정님이 "어떤 변수가 왜 제거되었는지 모르겠다"고 지적
+- 팀원들이 피처 선택 과정의 투명성을 요구
+- 모든 단계를 상세히 기록해서 나중에 검토 가능하도록 구현
+- 각 모델별 변수 중요도도 비교 분석 가능
+
+결과:
+- 모든 결정 과정을 CSV로 저장해서 엑셀에서도 확인 가능
+"""
 
 import pandas as pd
 import numpy as np
@@ -8,25 +19,44 @@ from typing import Dict, List, Any
 
 class VariableTracker:
     """
-    변수 선택 과정을 추적하고 분석하는 클래스.
+    변수 선택 과정 투명성 확보를 위한 추적 시스템
     
-    **주요 기능:**
-    - 단계별 변수 목록 저장
-    - 상관관계 분석 결과 저장  
-    - 모델별 변수 중요도 저장
-    - 종합 분석 결과 생성
+    **저장되는 파일들:**
+    1. variables_*_all.csv: 각 단계별 전체 변수 목록
+    2. correlation_matrix_full.csv: 전체 상관관계 행렬
+    3. high_correlation_pairs.csv: 높은 상관관계 변수 쌍
+    4. removed_variables_correlation.csv: 제거된 변수와 사유
+    5. feature_importance_*.csv: 모델별 변수 중요도
+    6. comprehensive_feature_analysis.csv: 종합 변수 분석
+    7. variable_selection_summary.csv: 전체 요약
     """
     
     def __init__(self):
-        self.initial_variables = {}
-        self.correlation_analysis = {}
-        self.removed_variables = {}
-        self.final_variables = {}
-        self.model_importance = {}
-        self.selection_summary = {}
+        """
+        변수 추적기 초기화
+        
+        각 단계별 정보를 담을 딕셔너리들 준비
+        - 나중에 모든 정보를 종합해서 리포트 생성
+        """
+        self.initial_variables = {}      # 각 단계별 초기 변수 목록
+        self.correlation_analysis = {}   # 상관관계 분석 결과
+        self.removed_variables = {}      # 제거된 변수와 사유
+        self.final_variables = {}        # 최종 선택된 변수들
+        self.model_importance = {}       # 모델별 변수 중요도
+        self.selection_summary = {}      # 전체 요약 정보
     
     def save_initial_variables(self, df: pd.DataFrame, stage: str = "initial"):
-        """초기 생성된 모든 변수 저장"""
+        """
+        각 단계별 생성된 모든 변수 목록 저장
+        
+        팀원들이 "피처 엔지니어링 후 변수가 몇 개나 됐는지" 궁금해해서
+        각 단계별로 상세하게 기록하도록 구현
+        
+        저장 정보:
+        - 전체 변수 목록 및 타입
+        - 결측치 정보
+        - 수치형/범주형 분류
+        """
         all_cols = df.columns.tolist()
         numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
         
@@ -40,24 +70,31 @@ class VariableTracker:
             'timestamp': pd.Timestamp.now()
         }
         
-        # CSV로 저장
+        # outputs 폴더에 CSV 저장
+        import os
+        os.makedirs('outputs', exist_ok=True)
+        
         pd.DataFrame({
             'variable_name': all_cols,
             'data_type': [str(df[col].dtype) for col in all_cols],
             'is_numeric': [col in numeric_cols for col in all_cols],
             'null_count': [df[col].isnull().sum() for col in all_cols],
             'null_percentage': [df[col].isnull().sum() / len(df) * 100 for col in all_cols]
-        }).to_csv(f'variables_{stage}_all.csv', index=False, encoding='utf-8')
+        }).to_csv(f'outputs/variables_{stage}_all.csv', index=False, encoding='utf-8')
         
-        print(f"✅ {stage} 단계 변수 목록 저장: variables_{stage}_all.csv")
+        print(f"✅ {stage} 단계 변수 목록 저장: outputs/variables_{stage}_all.csv")
         print(f"   총 {len(all_cols)}개 변수 (수치형: {len(numeric_cols)}개)")
         
     def save_correlation_analysis(self, corr_matrix: pd.DataFrame, threshold: float, 
                                 removed_vars: List[str], kept_vars: List[str]):
         """상관관계 분석 결과 저장"""
         
+        # outputs 폴더 생성
+        import os
+        os.makedirs('outputs', exist_ok=True)
+        
         # 1. 상관관계 행렬 저장
-        corr_matrix.to_csv('correlation_matrix_full.csv', encoding='utf-8')
+        corr_matrix.to_csv('outputs/correlation_matrix_full.csv', encoding='utf-8')
         
         # 2. 높은 상관관계 변수 쌍 찾기 및 저장
         upper = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(bool))
@@ -77,7 +114,7 @@ class VariableTracker:
         if high_corr_pairs:
             high_corr_df = pd.DataFrame(high_corr_pairs)
             high_corr_df = high_corr_df.sort_values('correlation', ascending=False)
-            high_corr_df.to_csv('high_correlation_pairs.csv', index=False, encoding='utf-8')
+            high_corr_df.to_csv('outputs/high_correlation_pairs.csv', index=False, encoding='utf-8')
         
         # 3. 제거된 변수와 사유 저장
         removal_reasons = []
@@ -101,14 +138,14 @@ class VariableTracker:
                     })
         
         if removal_reasons:
-            pd.DataFrame(removal_reasons).to_csv('removed_variables_correlation.csv', index=False, encoding='utf-8')
+            pd.DataFrame(removal_reasons).to_csv('outputs/removed_variables_correlation.csv', index=False, encoding='utf-8')
         
         # 4. 최종 선택된 변수 저장
         pd.DataFrame({
             'selected_variable': kept_vars,
             'selection_stage': 'after_correlation_filtering',
             'selection_reason': 'passed_correlation_threshold'
-        }).to_csv('selected_variables_after_correlation.csv', index=False, encoding='utf-8')
+        }).to_csv('outputs/selected_variables_after_correlation.csv', index=False, encoding='utf-8')
         
         self.correlation_analysis = {
             'threshold': threshold,
@@ -119,10 +156,10 @@ class VariableTracker:
         }
         
         print(f"✅ 상관관계 분석 결과 저장 완료")
-        print(f"   - 전체 상관관계 행렬: correlation_matrix_full.csv")
-        print(f"   - 높은 상관관계 쌍: high_correlation_pairs.csv ({len(high_corr_pairs) if high_corr_pairs else 0}개)")
-        print(f"   - 제거된 변수: removed_variables_correlation.csv ({len(removed_vars)}개)")
-        print(f"   - 선택된 변수: selected_variables_after_correlation.csv ({len(kept_vars)}개)")
+        print(f"   - 전체 상관관계 행렬: outputs/correlation_matrix_full.csv")
+        print(f"   - 높은 상관관계 쌍: outputs/high_correlation_pairs.csv ({len(high_corr_pairs) if high_corr_pairs else 0}개)")
+        print(f"   - 제거된 변수: outputs/removed_variables_correlation.csv ({len(removed_vars)}개)")
+        print(f"   - 선택된 변수: outputs/selected_variables_after_correlation.csv ({len(kept_vars)}개)")
     
     def save_model_importance(self, model_name: str, model: Any, feature_names: List[str], 
                             X_test: pd.DataFrame, y_test: pd.Series, predictions: np.ndarray):
@@ -163,9 +200,12 @@ class VariableTracker:
             item['importance_rank'] = i + 1
             item['cumulative_importance'] = sum([x['importance_score'] for x in feature_analysis[:i+1]]) / sum([x['importance_score'] for x in feature_analysis]) * 100
         
-        # 4. 저장
+        # 4. outputs 폴더에 저장
+        import os
+        os.makedirs('outputs', exist_ok=True)
+        
         feature_df = pd.DataFrame(feature_analysis)
-        feature_df.to_csv(f'feature_importance_{model_name.lower()}.csv', index=False, encoding='utf-8')
+        feature_df.to_csv(f'outputs/feature_importance_{model_name.lower()}.csv', index=False, encoding='utf-8')
         
         # 5. 모델 성능 저장
         performance = {
@@ -184,7 +224,7 @@ class VariableTracker:
             'feature_importance': feature_analysis
         }
         
-        print(f"✅ {model_name} 모델 분석 저장: feature_importance_{model_name.lower()}.csv")
+        print(f"✅ {model_name} 모델 분석 저장: outputs/feature_importance_{model_name.lower()}.csv")
         print(f"   RMSE: {rmse:.4f}, R²: {r2:.4f}, Top feature: {performance['top_feature']}")
         
         return feature_df
@@ -192,13 +232,17 @@ class VariableTracker:
     def save_comprehensive_summary(self):
         """전체 변수 선택 과정 종합 요약 저장"""
         
+        # outputs 폴더 생성
+        import os
+        os.makedirs('outputs', exist_ok=True)
+        
         # 1. 모든 모델 성능 비교
         model_comparison = []
         for model_name, info in self.model_importance.items():
             model_comparison.append(info['performance'])
         
         if model_comparison:
-            pd.DataFrame(model_comparison).to_csv('model_performance_comparison.csv', index=False, encoding='utf-8')
+            pd.DataFrame(model_comparison).to_csv('outputs/model_performance_comparison.csv', index=False, encoding='utf-8')
         
         # 2. 변수별 종합 중요도 (모든 모델 평균)
         all_features = set()
@@ -239,7 +283,7 @@ class VariableTracker:
         comprehensive_features = sorted(comprehensive_features, key=lambda x: x['avg_importance'], reverse=True)
         
         if comprehensive_features:
-            pd.DataFrame(comprehensive_features).to_csv('comprehensive_feature_analysis.csv', index=False, encoding='utf-8')
+            pd.DataFrame(comprehensive_features).to_csv('outputs/comprehensive_feature_analysis.csv', index=False, encoding='utf-8')
         
         # 3. 전체 요약 통계
         initial_count = 0
@@ -259,10 +303,10 @@ class VariableTracker:
             'best_r2': max(model_comparison, key=lambda x: x['r2_score'])['r2_score'] if model_comparison else 'unknown'
         }
         
-        pd.DataFrame([summary_stats]).to_csv('variable_selection_summary.csv', index=False, encoding='utf-8')
+        pd.DataFrame([summary_stats]).to_csv('outputs/variable_selection_summary.csv', index=False, encoding='utf-8')
         
         print(f"\n🎯 종합 분석 결과 저장 완료:")
-        print(f"   - 모델 성능 비교: model_performance_comparison.csv")
-        print(f"   - 종합 변수 분석: comprehensive_feature_analysis.csv") 
-        print(f"   - 전체 요약: variable_selection_summary.csv")
+        print(f"   - 모델 성능 비교: outputs/model_performance_comparison.csv")
+        print(f"   - 종합 변수 분석: outputs/comprehensive_feature_analysis.csv") 
+        print(f"   - 전체 요약: outputs/variable_selection_summary.csv")
         print(f"   - 최고 성능 모델: {summary_stats['best_model']} (R²: {summary_stats['best_r2']:.3f})") 
