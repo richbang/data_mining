@@ -1,0 +1,2 @@
+total_initial_variables,total_numeric_variables,variables_removed_by_correlation,final_variables_count,correlation_threshold_used,best_model,best_rmse,best_r2
+96,96,0,84,unknown,LightGBM,0.7343705615339352,0.7253040892495752

@@ -1,0 +1,5 @@
+parameter,value
+best_alpha,0.001
+best_l1_ratio,0.1
+cv_r2_score,0.5876085373323241
+selected_features_count,84.0

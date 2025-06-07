@@ -1,0 +1,85 @@
+model_name,feature_name,importance_score,importance_rank,importance_percentage,cumulative_importance,is_top_10,is_top_20
+LightGBM,call_count_roll_std_3,712,1,11.866666666666667,11.866666666666667,False,False
+LightGBM,call_count_roll_mean_3,540,2,9.0,20.866666666666667,False,False
+LightGBM,nearby_avg_calls,375,3,6.25,27.116666666666667,False,False
+LightGBM,call_count_lag_1,300,4,5.0,32.11666666666667,False,False
+LightGBM,rolling_corr_call_rain,250,5,4.166666666666666,36.28333333333333,False,False
+LightGBM,call_count_roll_max_3,238,6,3.966666666666667,40.25,False,False
+LightGBM,call_count_roll_mean_7,226,7,3.7666666666666666,44.016666666666666,False,False
+LightGBM,call_count_roll_std_7,148,8,2.466666666666667,46.483333333333334,False,False
+LightGBM,humidity_avg_lag_1,144,9,2.4,48.88333333333333,False,False
+LightGBM,call_count_roll_mean_14,114,10,1.9,50.78333333333334,False,False
+LightGBM,humidity_avg_lag_3,113,11,1.8833333333333333,52.666666666666664,False,False
+LightGBM,ta_max_lag_1,108,12,1.7999999999999998,54.46666666666666,False,False
+LightGBM,ws_ins_max,102,13,1.7000000000000002,56.166666666666664,True,True
+LightGBM,ta_min_lag_3,101,14,1.6833333333333331,57.85,False,False
+LightGBM,ws_max_lag_3,98,15,1.633333333333333,59.483333333333334,False,False
+LightGBM,ws_max_lag_1,92,16,1.5333333333333332,61.016666666666666,False,False
+LightGBM,ta_max_lag_3,89,17,1.4833333333333334,62.5,False,False
+LightGBM,humidity_range,85,18,1.4166666666666665,63.916666666666664,False,False
+LightGBM,남자.인구수,84,19,1.4000000000000001,65.31666666666666,False,True
+LightGBM,ta_min_lag_1,79,20,1.3166666666666667,66.63333333333334,False,False
+LightGBM,call_count_roll_max_7,79,21,1.3166666666666667,67.95,False,False
+LightGBM,pca_3,79,22,1.3166666666666667,69.26666666666667,False,False
+LightGBM,weather_interaction_hm_min ws_max,74,23,1.2333333333333334,70.5,False,False
+LightGBM,weekday,72,24,1.2,71.7,False,True
+LightGBM,rn_day_lag_1,72,25,1.2,72.89999999999999,False,False
+LightGBM,day,65,26,1.0833333333333335,73.98333333333333,False,True
+LightGBM,ta_max_min,63,27,1.05,75.03333333333333,True,True
+LightGBM,day_of_year,63,28,1.05,76.08333333333334,False,True
+LightGBM,weather_interaction_ta_min hm_max,63,29,1.05,77.13333333333333,False,False
+LightGBM,ta_max,62,30,1.0333333333333332,78.16666666666666,True,True
+LightGBM,rn_day_lag_3,62,31,1.0333333333333332,79.2,False,False
+LightGBM,weather_interaction_ta_max ws_max,59,32,0.9833333333333333,80.18333333333332,False,False
+LightGBM,weather_interaction_ws_max rn_day,58,33,0.9666666666666667,81.15,False,False
+LightGBM,weather_interaction_hm_max ws_max,56,34,0.9333333333333335,82.08333333333333,False,False
+LightGBM,apparent_temp,54,35,0.8999999999999999,82.98333333333333,False,False
+LightGBM,call_count_lag_3,51,36,0.8500000000000001,83.83333333333334,False,False
+LightGBM,call_count_lag_7,50,37,0.8333333333333334,84.66666666666667,False,False
+LightGBM,남여_비율_집계,49,38,0.8166666666666665,85.48333333333333,False,True
+LightGBM,ta_min,47,39,0.7833333333333333,86.26666666666667,True,True
+LightGBM,temp_avg,47,40,0.7833333333333333,87.05000000000001,False,False
+LightGBM,weather_interaction_ta_min hm_min,45,41,0.75,87.8,False,False
+LightGBM,hm_min,43,42,0.7166666666666667,88.51666666666667,True,True
+LightGBM,humidity_avg,43,43,0.7166666666666667,89.23333333333333,False,False
+LightGBM,xcoord,42,44,0.7000000000000001,89.93333333333334,True,True
+LightGBM,discomfort_index,41,45,0.6833333333333333,90.61666666666667,False,False
+LightGBM,ycoord,38,46,0.6333333333333333,91.25,True,True
+LightGBM,세대당_인구_집계,34,47,0.5666666666666667,91.81666666666666,False,True
+LightGBM,weather_interaction_ta_max ta_min,34,48,0.5666666666666667,92.38333333333333,False,False
+LightGBM,distance_from_center,33,49,0.5499999999999999,92.93333333333334,False,False
+LightGBM,call_count_roll_max_14,32,50,0.5333333333333333,93.46666666666667,False,False
+LightGBM,rn_day,30,51,0.5,93.96666666666667,True,True
+LightGBM,weather_interaction_ta_max rn_day,30,52,0.5,94.46666666666667,False,False
+LightGBM,temporal_cluster,29,53,0.48333333333333334,94.95,False,False
+LightGBM,weather_interaction_hm_min rn_day,28,54,0.46666666666666673,95.41666666666667,False,False
+LightGBM,gu_total_calls,28,55,0.46666666666666673,95.88333333333333,False,False
+LightGBM,ws_max,26,56,0.4333333333333333,96.31666666666666,True,True
+LightGBM,weather_interaction_hm_max hm_min,25,57,0.4166666666666667,96.73333333333333,False,False
+LightGBM,day_cos,24,58,0.4,97.13333333333334,False,False
+LightGBM,typhoon,23,59,0.3833333333333333,97.51666666666667,False,True
+LightGBM,year,20,60,0.33333333333333337,97.85000000000001,False,True
+LightGBM,weather_interaction_hm_max rn_day,20,61,0.33333333333333337,98.18333333333334,False,False
+LightGBM,day_sin,19,62,0.31666666666666665,98.5,False,False
+LightGBM,여자.인구수,18,63,0.3,98.8,False,True
+LightGBM,weather_interaction_ta_min rn_day,18,64,0.3,99.1,False,False
+LightGBM,gu_avg_calls,18,65,0.3,99.4,False,False
+LightGBM,STN,14,66,0.23333333333333336,99.63333333333333,True,True
+LightGBM,temp_range,6,67,0.1,99.73333333333333,False,False
+LightGBM,month_sin,5,68,0.08333333333333334,99.81666666666666,False,False
+LightGBM,spring_spatial_cluster,3,69,0.05,99.86666666666667,False,False
+LightGBM,autumn_spatial_cluster,3,70,0.05,99.91666666666667,False,False
+LightGBM,summer_spatial_cluster,2,71,0.03333333333333333,99.95,False,False
+LightGBM,month,1,72,0.016666666666666666,99.96666666666667,False,True
+LightGBM,month_cos,1,73,0.016666666666666666,99.98333333333333,False,False
+LightGBM,windy_and_rainy,1,74,0.016666666666666666,100.0,False,False
+LightGBM,is_weekend,0,75,0.0,100.0,False,False
+LightGBM,is_rainy,0,76,0.0,100.0,False,False
+LightGBM,is_typhoon,0,77,0.0,100.0,False,False
+LightGBM,ta_max_is_extreme_q95,0,78,0.0,100.0,False,False
+LightGBM,ta_max_is_extreme_q05,0,79,0.0,100.0,False,False
+LightGBM,ws_max_is_extreme_q95,0,80,0.0,100.0,False,False
+LightGBM,ws_max_is_extreme_q05,0,81,0.0,100.0,False,False
+LightGBM,rn_day_is_extreme_q95,0,82,0.0,100.0,False,False
+LightGBM,hot_and_rainy,0,83,0.0,100.0,False,False
+LightGBM,distance_from_coast,0,84,0.0,100.0,False,False

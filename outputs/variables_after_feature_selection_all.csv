@@ -1,0 +1,86 @@
+variable_name,data_type,is_numeric,null_count,null_percentage
+STN,int64,True,0,0.0
+ta_max,float64,True,0,0.0
+ta_min,float64,True,0,0.0
+ta_max_min,float64,True,0,0.0
+hm_min,float64,True,0,0.0
+ws_max,float64,True,0,0.0
+ws_ins_max,float64,True,0,0.0
+rn_day,float64,True,0,0.0
+xcoord,float64,True,0,0.0
+ycoord,float64,True,0,0.0
+남자.인구수,int64,True,0,0.0
+여자.인구수,int64,True,0,0.0
+세대당_인구_집계,float64,True,0,0.0
+남여_비율_집계,float64,True,0,0.0
+year,int64,True,0,0.0
+month,int64,True,0,0.0
+day,int64,True,0,0.0
+typhoon,int64,True,0,0.0
+day_of_year,int32,True,0,0.0
+weekday,int32,True,0,0.0
+is_weekend,int64,True,0,0.0
+month_sin,float64,True,0,0.0
+month_cos,float64,True,0,0.0
+day_sin,float64,True,0,0.0
+day_cos,float64,True,0,0.0
+apparent_temp,float64,True,0,0.0
+temp_range,float64,True,0,0.0
+temp_avg,float64,True,0,0.0
+humidity_range,float64,True,0,0.0
+humidity_avg,float64,True,0,0.0
+discomfort_index,float64,True,0,0.0
+is_rainy,int64,True,0,0.0
+is_typhoon,int64,True,0,0.0
+call_count_lag_1,float64,True,134,0.40733197556008144
+call_count_lag_3,float64,True,402,1.2219959266802443
+call_count_lag_7,float64,True,938,2.8513238289205702
+ta_max_lag_1,float64,True,134,0.40733197556008144
+ta_max_lag_3,float64,True,402,1.2219959266802443
+ta_min_lag_1,float64,True,134,0.40733197556008144
+ta_min_lag_3,float64,True,402,1.2219959266802443
+rn_day_lag_1,float64,True,134,0.40733197556008144
+rn_day_lag_3,float64,True,402,1.2219959266802443
+ws_max_lag_1,float64,True,134,0.40733197556008144
+ws_max_lag_3,float64,True,402,1.2219959266802443
+humidity_avg_lag_1,float64,True,134,0.40733197556008144
+humidity_avg_lag_3,float64,True,402,1.2219959266802443
+call_count_roll_mean_3,float64,True,0,0.0
+call_count_roll_std_3,float64,True,134,0.40733197556008144
+call_count_roll_max_3,float64,True,0,0.0
+call_count_roll_mean_7,float64,True,0,0.0
+call_count_roll_std_7,float64,True,134,0.40733197556008144
+call_count_roll_max_7,float64,True,0,0.0
+call_count_roll_mean_14,float64,True,0,0.0
+call_count_roll_max_14,float64,True,0,0.0
+weather_interaction_ta_max ta_min,float64,True,0,0.0
+weather_interaction_ta_max ws_max,float64,True,0,0.0
+weather_interaction_ta_max rn_day,float64,True,0,0.0
+weather_interaction_ta_min hm_max,float64,True,0,0.0
+weather_interaction_ta_min hm_min,float64,True,0,0.0
+weather_interaction_ta_min rn_day,float64,True,0,0.0
+weather_interaction_hm_max hm_min,float64,True,0,0.0
+weather_interaction_hm_max ws_max,float64,True,0,0.0
+weather_interaction_hm_max rn_day,float64,True,0,0.0
+weather_interaction_hm_min ws_max,float64,True,0,0.0
+weather_interaction_hm_min rn_day,float64,True,0,0.0
+weather_interaction_ws_max rn_day,float64,True,0,0.0
+rolling_corr_call_rain,float64,True,8377,25.464328054229867
+gu_total_calls,int64,True,0,0.0
+gu_avg_calls,float64,True,0,0.0
+ta_max_is_extreme_q95,int64,True,0,0.0
+ta_max_is_extreme_q05,int64,True,0,0.0
+ws_max_is_extreme_q95,int64,True,0,0.0
+ws_max_is_extreme_q05,int64,True,0,0.0
+rn_day_is_extreme_q95,int64,True,0,0.0
+hot_and_rainy,int64,True,0,0.0
+windy_and_rainy,int64,True,0,0.0
+distance_from_center,float64,True,0,0.0
+distance_from_coast,float64,True,0,0.0
+temporal_cluster,int32,True,0,0.0
+spring_spatial_cluster,float64,True,27832,84.60345928200141
+summer_spatial_cluster,float64,True,16213,49.28412925190747
+autumn_spatial_cluster,float64,True,21749,66.11241146609113
+nearby_avg_calls,float64,True,5602,17.028908411101316
+pca_3,float64,True,0,0.0
+call_count,int64,True,0,0.0

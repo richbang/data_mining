@@ -5,6 +5,9 @@
 *.json
 *.parquet
 
+# 예외: 특정 중요 데이터 파일은 포함
+!human_combined_full_data_utf8.csv
+
 # Python 관련
 __pycache__/
 *.py[cod]
@@ -84,8 +87,13 @@ Thumbs.db
 *.bmp
 *.tiff
 
-# 출력 디렉토리
-outputs/
+# 예외: outputs 폴더의 결과 파일들은 포함
+!outputs/
+!outputs/**/*.csv
+!outputs/**/*.png
+!outputs/**/*.jpg
+
+# 출력 디렉토리 (outputs는 예외로 허용됨)
 results/
 logs/
 

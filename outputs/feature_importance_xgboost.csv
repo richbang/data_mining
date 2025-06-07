@@ -1,0 +1,85 @@
+model_name,feature_name,importance_score,importance_rank,importance_percentage,cumulative_importance,is_top_10,is_top_20
+XGBoost,typhoon,0.7491321,1,74.9132,74.9132,False,True
+XGBoost,call_count_roll_mean_3,0.05603828,2,5.603827,80.51702,False,False
+XGBoost,call_count_roll_max_3,0.05305028,3,5.305027,85.82205,False,False
+XGBoost,rn_day_is_extreme_q95,0.044864997,4,4.4864993,90.308556,False,False
+XGBoost,nearby_avg_calls,0.0418827,5,4.1882696,94.496826,False,False
+XGBoost,weather_interaction_ta_max rn_day,0.008319143,6,0.83191425,95.328735,False,False
+XGBoost,call_count_lag_1,0.0056364536,7,0.5636453,95.89238,False,False
+XGBoost,weather_interaction_hm_max rn_day,0.003838533,8,0.38385326,96.27624,False,False
+XGBoost,weather_interaction_ws_max rn_day,0.0037143072,9,0.37143067,96.64767,False,False
+XGBoost,call_count_roll_std_3,0.003277761,10,0.32777604,96.97545,False,False
+XGBoost,weather_interaction_hm_min rn_day,0.001424404,11,0.14244038,97.11789,False,False
+XGBoost,gu_avg_calls,0.0012716211,12,0.1271621,97.24505,False,False
+XGBoost,humidity_avg_lag_1,0.0012419182,13,0.124191806,97.36924,False,False
+XGBoost,남자.인구수,0.0011006169,14,0.110061675,97.4793,False,True
+XGBoost,weather_interaction_ta_min rn_day,0.0010265767,15,0.10265766,97.581955,False,False
+XGBoost,day_of_year,0.0007466276,16,0.074662745,97.65662,False,True
+XGBoost,weather_interaction_ta_max ws_max,0.00069547456,17,0.06954745,97.726166,False,False
+XGBoost,rn_day_lag_3,0.0006831784,18,0.06831784,97.79449,False,False
+XGBoost,rn_day,0.00065960194,19,0.06596019,97.86044,True,True
+XGBoost,남여_비율_집계,0.00065721234,20,0.06572123,97.92616,False,True
+XGBoost,rolling_corr_call_rain,0.00065628847,21,0.06562884,97.99179,False,False
+XGBoost,windy_and_rainy,0.0006430626,22,0.06430625,98.0561,False,False
+XGBoost,ta_max_min,0.0006370354,23,0.06370354,98.119804,True,True
+XGBoost,rn_day_lag_1,0.00060856825,24,0.06085682,98.180664,False,False
+XGBoost,month_sin,0.0005884011,25,0.058840103,98.2395,False,False
+XGBoost,call_count_roll_std_7,0.0005803414,26,0.058034133,98.29754,False,False
+XGBoost,weather_interaction_ta_min hm_max,0.000572532,27,0.057253197,98.35479,False,False
+XGBoost,call_count_roll_max_7,0.0005654488,28,0.05654487,98.41134,False,False
+XGBoost,year,0.00051748636,29,0.05174863,98.46309,False,True
+XGBoost,weather_interaction_hm_max hm_min,0.00047553977,30,0.04755397,98.51064,False,False
+XGBoost,discomfort_index,0.0004712404,31,0.047124036,98.55776,False,False
+XGBoost,weather_interaction_hm_min ws_max,0.00045889834,32,0.04588983,98.60365,False,False
+XGBoost,temporal_cluster,0.00045197183,33,0.045197178,98.64885,False,False
+XGBoost,humidity_avg_lag_3,0.0004500798,34,0.045007974,98.69386,False,False
+XGBoost,humidity_range,0.00044406732,35,0.044406727,98.738266,False,False
+XGBoost,temp_avg,0.00043187078,36,0.04318707,98.781456,False,False
+XGBoost,ws_max_lag_1,0.00042493411,37,0.042493407,98.823944,False,False
+XGBoost,ws_ins_max,0.00042200412,38,0.042200405,98.86615,True,True
+XGBoost,weekday,0.00041809824,39,0.04180982,98.90796,False,True
+XGBoost,day_sin,0.00040676852,40,0.040676847,98.94863,False,False
+XGBoost,weather_interaction_ta_min hm_min,0.00040222812,41,0.040222805,98.98885,False,False
+XGBoost,weather_interaction_ta_max ta_min,0.00040076615,42,0.04007661,99.02893,False,False
+XGBoost,day_cos,0.00039912443,43,0.039912436,99.06885,False,False
+XGBoost,autumn_spatial_cluster,0.00039708833,44,0.039708827,99.10855,False,False
+XGBoost,day,0.0003941435,45,0.039414346,99.14797,False,True
+XGBoost,ws_max_lag_3,0.00039355064,46,0.03935506,99.187325,False,False
+XGBoost,pca_3,0.00039307534,47,0.039307527,99.22664,False,False
+XGBoost,apparent_temp,0.00038456987,48,0.03845698,99.26509,False,False
+XGBoost,여자.인구수,0.00038104132,49,0.038104124,99.3032,False,True
+XGBoost,ta_max_lag_3,0.0003739647,50,0.037396464,99.34059,False,False
+XGBoost,weather_interaction_hm_max ws_max,0.00036701455,51,0.03670145,99.37729,False,False
+XGBoost,call_count_roll_mean_14,0.00035393072,52,0.03539307,99.41269,False,False
+XGBoost,humidity_avg,0.0003519565,53,0.035195645,99.44788,False,False
+XGBoost,month,0.00035118617,54,0.035118613,99.483,False,True
+XGBoost,call_count_lag_7,0.00033365728,55,0.033365726,99.516365,False,False
+XGBoost,call_count_roll_mean_7,0.00033242416,56,0.033242412,99.54961,False,False
+XGBoost,ta_max_lag_1,0.0003179877,57,0.031798765,99.581406,False,False
+XGBoost,ta_min_lag_1,0.0003148203,58,0.031482026,99.61289,False,False
+XGBoost,ta_min_lag_3,0.00030928044,59,0.030928042,99.64382,False,False
+XGBoost,call_count_roll_max_14,0.00029205714,60,0.029205712,99.67303,False,False
+XGBoost,spring_spatial_cluster,0.0002811232,61,0.028112318,99.70113,False,False
+XGBoost,distance_from_center,0.00027322938,62,0.027322935,99.72846,False,False
+XGBoost,gu_total_calls,0.00026373583,63,0.02637358,99.75484,False,False
+XGBoost,call_count_lag_3,0.0002633358,64,0.026333576,99.781166,False,False
+XGBoost,세대당_인구_집계,0.00026203063,65,0.02620306,99.80737,False,True
+XGBoost,ws_max,0.00025870377,66,0.025870375,99.83324,True,True
+XGBoost,hm_min,0.00023631101,67,0.023631098,99.85687,True,True
+XGBoost,hot_and_rainy,0.00022176547,68,0.022176543,99.87905,False,False
+XGBoost,ycoord,0.00021736782,69,0.02173678,99.90079,True,True
+XGBoost,ta_max,0.00019912362,70,0.019912358,99.9207,True,True
+XGBoost,xcoord,0.00019177367,71,0.019177364,99.93988,True,True
+XGBoost,ta_min,0.00019128287,72,0.019128285,99.95901,True,True
+XGBoost,summer_spatial_cluster,0.00018868473,73,0.01886847,99.977875,False,False
+XGBoost,month_cos,0.00015142684,74,0.015142682,99.99302,False,False
+XGBoost,STN,6.325035e-05,75,0.0063250344,99.999344,True,True
+XGBoost,distance_from_coast,6.586934e-06,76,0.0006586933,100.0,False,False
+XGBoost,is_weekend,0.0,77,0.0,100.0,False,False
+XGBoost,temp_range,0.0,78,0.0,100.0,False,False
+XGBoost,is_rainy,0.0,79,0.0,100.0,False,False
+XGBoost,is_typhoon,0.0,80,0.0,100.0,False,False
+XGBoost,ta_max_is_extreme_q95,0.0,81,0.0,100.0,False,False
+XGBoost,ta_max_is_extreme_q05,0.0,82,0.0,100.0,False,False
+XGBoost,ws_max_is_extreme_q95,0.0,83,0.0,100.0,False,False
+XGBoost,ws_max_is_extreme_q05,0.0,84,0.0,100.0,False,False

@@ -1,0 +1,85 @@
+selected_features
+STN
+ta_max
+ta_min
+ta_max_min
+hm_min
+ws_max
+ws_ins_max
+rn_day
+xcoord
+ycoord
+남자.인구수
+여자.인구수
+세대당_인구_집계
+남여_비율_집계
+year
+month
+day
+typhoon
+day_of_year
+weekday
+is_weekend
+month_sin
+month_cos
+day_sin
+day_cos
+apparent_temp
+temp_range
+temp_avg
+humidity_range
+humidity_avg
+discomfort_index
+is_rainy
+is_typhoon
+call_count_lag_1
+call_count_lag_3
+call_count_lag_7
+ta_max_lag_1
+ta_max_lag_3
+ta_min_lag_1
+ta_min_lag_3
+rn_day_lag_1
+rn_day_lag_3
+ws_max_lag_1
+ws_max_lag_3
+humidity_avg_lag_1
+humidity_avg_lag_3
+call_count_roll_mean_3
+call_count_roll_std_3
+call_count_roll_max_3
+call_count_roll_mean_7
+call_count_roll_std_7
+call_count_roll_max_7
+call_count_roll_mean_14
+call_count_roll_max_14
+weather_interaction_ta_max ta_min
+weather_interaction_ta_max ws_max
+weather_interaction_ta_max rn_day
+weather_interaction_ta_min hm_max
+weather_interaction_ta_min hm_min
+weather_interaction_ta_min rn_day
+weather_interaction_hm_max hm_min
+weather_interaction_hm_max ws_max
+weather_interaction_hm_max rn_day
+weather_interaction_hm_min ws_max
+weather_interaction_hm_min rn_day
+weather_interaction_ws_max rn_day
+rolling_corr_call_rain
+gu_total_calls
+gu_avg_calls
+ta_max_is_extreme_q95
+ta_max_is_extreme_q05
+ws_max_is_extreme_q95
+ws_max_is_extreme_q05
+rn_day_is_extreme_q95
+hot_and_rainy
+windy_and_rainy
+distance_from_center
+distance_from_coast
+temporal_cluster
+spring_spatial_cluster
+summer_spatial_cluster
+autumn_spatial_cluster
+nearby_avg_calls
+pca_3
